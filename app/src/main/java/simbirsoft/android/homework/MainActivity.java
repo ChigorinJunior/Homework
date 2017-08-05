@@ -9,25 +9,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout LinearVertical;
+    // обе переменные не используются
+    LinearLayout LinearVertical; // Имена переменных должны начинаться со строчной буквы
     TextView textView;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //обработчик 1 цвета
-        TextView textView1 = (TextView) findViewById(R.id.ChangeColorBackRed);
+        // лучше сделать кнопку, а не TextView
+        TextView textView1 = (TextView) findViewById(R.id.ChangeColorBackRed); // переменная должна начинаться со строчной буквы и должна быть существительным, а не глаголом
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // не нужно каждый раз искать кнопку по id, нужно сделать её членом класса activity
                 TextView textView = (TextView)findViewById(R.id.ChangeColorBackRed);
-
+                
+                // локальную переменную toast можно убрать
+                // достаточно использовать context activity, а не приложения
+                // текст должен лежать в ресурсах
                 Toast toast = Toast.makeText(getApplicationContext(), "Смена фонового цвета", Toast.LENGTH_LONG);
                 toast.show();
                 ((LinearLayout) findViewById(R.id.LinearVertical)).setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.ColorChangeRed));
             }
         });
 
+        // нужно сделать какой-то общий метод, а не копировать один и тот же код
         //обработчик 2 цвета
         TextView textView2 = (TextView) findViewById(R.id.ChangeColorBackBlue);
         textView2.setOnClickListener(new View.OnClickListener() {
