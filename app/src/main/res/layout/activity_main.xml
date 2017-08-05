@@ -13,6 +13,7 @@
         tools:context="simbirsoft.android.homework.MainActivity"
         android:orientation="vertical"
         tools:ignore="UseCompoundDrawables"
+        <!-- у дочерних элементов нет весов, weightSum не нужен -->
         android:weightSum="1">
 
 
@@ -24,7 +25,8 @@
             android:contentDescription="@string/ContentDescription"/>
 
         <TextView
-            android:id="@+id/TitleText"
+            <!-- именование переменных лучше сделать в одном стиле -->
+            android:id="@+id/TitleText" 
             style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,6 +36,7 @@
         <TextView
             android:id="@+id/GeneralText"
             style="@style/GeneralText"
+            <!-- убрать размерности в ресурсы -->      
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,10 +56,12 @@
             <TextView
                 android:id="@+id/ChangeColorBackRed"
                 style="ColorChangeText"
+                <!-- в этом месте IDE скорее всего подсказывает, что ширину лучше сделать 0dp -->
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@color/ColorChangeRed"
+                <!-- можно просто center -->
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/colorChangeRed" />
 
@@ -75,10 +80,11 @@
                 style="ColorChangeText"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                <!-- здесь вес скорее всего тоже должне быть 1 -->     
                 android:layout_weight="2"
                 android:background="@color/ColorChangeGreen"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/colorChangeGreen" />
+                android:text="@string/colorChangeGreen" />     
     </LinearLayout>
     </LinearLayout>
 </ScrollView>
